@@ -1,19 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito:wght@400;500;600&display=swap');
+$font-family1: ('Montserrat', sans-serif);
+$font-family2:('Nunito', sans-serif);
 * {
   margin: 0;
   padding: 0;
 }
-
 .container {
   position: relative;
   max-width: 535px;
   width: 100%;
-  background-image: url(/Images/925892535s-3901858323-removebg-preview.png);
+  background-image: url(/Images/925892535s-3901858323-removebg-preview.png); 
   background-position: center;
   background-repeat: no-repeat;
+  // background: rgb(2, 0, 36);
+  // background: linear-gradient(
+  //   45deg,
+  //   rgba(2, 0, 36, 1) 0%,
+  //   rgba(9, 9, 121, 1) 34%,
+  //   rgba(0, 212, 255, 1) 100%
+  // );
   padding: 44px;
-  border-radius: 9px;
-  box-shadow: inset -2px -1px 36px -12px rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  box-shadow:-2px -1px 36px -12px rgba(0,0,0,0.75);
   margin: 50px auto;
 }
 
@@ -22,7 +30,7 @@
   color: #000;
   font-weight: 500;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-family1;
 }
 
 .container .form {
@@ -37,7 +45,7 @@
 .input-box label {
   color: #000;
   font-size: 1.1rem;
-  font-family: "Nunito", sans-serif;
+  font-family: $font-family2;
 }
 
 .form :where(.input-box input, .select-box) {
@@ -60,53 +68,48 @@
 
 .form .column {
   display: flex;
-  -moz-column-gap: 40px;
-       column-gap: 40px;
+  column-gap: 40px;
 }
-
-.form .checkbox {
-  margin-top: 10px;
+.form {
+  & .checkbox {
+    margin-top: 10px;
+    & label{
+        color: #000;
+        font-family: $font-family2;
+        font-size: 1.1rem;
+    }
+    & .s_option {
+      & .check {
+        column-gap: 5px;
+        & input {
+          accent-color: #e61818;
+        }
+      }
+    }
+  }
+  & :where(.s_option, .check) {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    flex-wrap: wrap;
+  }
 }
-.form .checkbox label {
-  color: #000;
-  font-family: "Nunito", sans-serif;
-  font-size: 1.1rem;
-}
-.form .checkbox .s_option .check {
-  -moz-column-gap: 5px;
-       column-gap: 5px;
-}
-.form .checkbox .s_option .check input {
-  accent-color: #e61818;
-}
-.form :where(.s_option, .check) {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 50px;
-       column-gap: 50px;
-  flex-wrap: wrap;
-}
-
 .form .gender-box {
   margin-top: 10px;
 }
-
-.form .gender-box label {
+.form .gender-box label{
   font-size: 1.1rem;
-  font-family: "Nunito", sans-serif;
+  font-family: $font-family2;
 }
-
 .form :where(.gender-option, .gender) {
   display: flex;
   align-items: center;
-  -moz-column-gap: 50px;
-       column-gap: 50px;
+  column-gap: 50px;
   flex-wrap: wrap;
 }
 
 .form .gender {
-  -moz-column-gap: 5px;
-       column-gap: 5px;
+  column-gap: 5px;
 }
 
 .gender input {
@@ -124,12 +127,10 @@
 .address :where(input, .select-box) {
   margin-top: 10px;
 }
-
-.input-box .address {
+.input-box .address{
   font-size: 1.1rem;
-  font-family: "Nunito", sans-serif;
+  font-family: $font-family2;
 }
-
 .select-box select {
   height: 100%;
   width: 100%;
@@ -151,9 +152,70 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  // background: #ee4e34;
   background: #e61818;
+  // background: linear-gradient(
+  //   45deg,
+  //   rgb(109, 108, 131) 0%,
+  //   rgb(41, 41, 167) 34%,
+  //   rgba(0, 212, 255, 1) 100%
+  // );
 }
 
 .form button:hover {
   background: #eb4747;
-}/*# sourceMappingURL=Index.css.map */
+}
+.btn {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.3rem 3rem;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  font-size: 17px;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #e0303a;
+  color: ghostwhite;
+  margin-left: 5rem;
+  margin-top: 0.3rem;
+ }
+ 
+ .btn span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+ }
+ 
+ .btn:hover span {
+  color: black;
+ }
+ 
+ .btn::before,
+ .btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+ }
+ 
+ .btn::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+ }
+ 
+ .btn:hover::before {
+  transform: translate3d(100%, 0, 0);
+ }
+ 
