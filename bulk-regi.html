@@ -12,42 +12,14 @@
 <body>
     <section class="container">
         <header>Mock Test Registration</header>
-        <!-- <div class="column"> -->
             <a href="index.html"><button type="button" class="btn"> <span>Single</span></button></a>
             <a href="#"><button type="button" class="btn"> <span>Bulk</span></button></a>
-        <!-- </div> -->
         <hr style="color: black; border-radius: 10px; margin-top: 10px; ">
         <form class="form" action="#">
             <div class="input-box">
                 <label>Student Full Name :</label>
                 <input required="" placeholder="Enter full name" type="text">
             </div>
-            <!-- <div class="checkbox">
-                <label>Standard :</label>
-                <div class="s_option">
-                    <div class="check">
-                        <input type="radio" name="Standard" id="check1" checked="">
-                        <label for="check1">10th</label>
-                    </div>
-                    <div class="check">
-                        <input type="radio" name="Standard" id="check2" checked="">
-                        <label for="check2">12th(JEE/NEET + GUJCET)</label>
-                    </div>
-                </div>
-            </div>
-            <div class="checkbox">
-                <label>Medium :</label>
-                <div class="s_option">
-                    <div class="check">
-                        <input type="radio" name="Medium" id="check1" checked="">
-                        <label for="check1">A</label>
-                    </div>
-                    <div class="check">
-                        <input type="radio" name="Medium" id="check2" checked="">
-                        <label for="check2">B</label>
-                    </div>
-                </div>
-            </div> -->
             <div class="input-box">
                 <label>Contect No. :</label>
                 <input required="" placeholder="Enter phone number" type="telephone">
@@ -56,23 +28,6 @@
                 <label>WhatsApp No. :</label>
                 <input type="telephone" placeholder="Enter WhatsApp Number" required>
             </div>
-            <!-- <div class="gender-box">
-                <label style="color: #000;">Gender :</label>
-                <div class="gender-option">
-                    <div class="gender">
-                        <input checked="" name="gender" id="check-male" type="radio">
-                        <label for="check-male">Male</label>
-                    </div>
-                    <div class="gender">
-                        <input name="gender" id="check-female" type="radio">
-                        <label for="check-female">Female</label>
-                    </div>
-                    <div class="gender">
-                        <input name="gender" id="check-other" type="radio">
-                        <label for="check-other">Prefer not to say</label>
-                    </div>
-                </div>
-            </div> -->
             <div class="input-box address">
                 <label>Address :</label>
                 <input required="" placeholder="Enter street address" type="text">
@@ -298,7 +253,10 @@
                             <option value="Wankaner">Wankaner</option>
                         </select>
                     </div>
-                    <!-- <input required="" placeholder="Enter your city" type="text"> -->
+                </div>
+                <div class="input-box">
+                    <label>Upload Excel File:</label>
+                    <input type="file" name="excelFile" accept=".xls, .xlsx">
                 </div>
             </div>
             <button>Submit</button>
