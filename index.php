@@ -13,8 +13,8 @@
     <section class="container">
         <header>Mock Test Registration</header>
         <!-- <div class="column"> -->
-            <a href="#"><button type="button" class="btn"> <span>Single</span></button></a>
-            <a href="bulk-regi.html"><button type="button" class="btn"> <span>Bulk</span></button></a>
+        <a href="#"><button type="button" class="btn"> <span>Single</span></button></a>
+        <a href="bulk-regi.html"><button type="button" class="btn"> <span>Bulk</span></button></a>
         <!-- </div> -->
         <hr style="color: black; border-radius: 10px; margin-top: 10px; ">
         <form class="form" action="#" method="post">
@@ -40,10 +40,23 @@
                 <div class="s_option">
                     <div class="check">
                         <input type="radio" name="Medium" id="check1" checked="">
+                        <label for="check1">Guj</label>
+                    </div>
+                    <div class="check">
+                        <input type="radio" name="Medium" id="check2">
+                        <label for="check2">Eng</label>
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label>Group :</label>
+                <div class="s_option">
+                    <div class="check">
+                        <input type="radio" name="group" id="check3" checked="">
                         <label for="check1">A</label>
                     </div>
                     <div class="check">
-                        <input type="radio" name="Medium" id="check2" >
+                        <input type="radio" name="group" id="check4">
                         <label for="check2">B</label>
                     </div>
                 </div>
@@ -301,7 +314,41 @@
                     <!-- <input required="" placeholder="Enter your city" type="text"> -->
                 </div>
             </div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
+            <?php
+            // Establish a MySQL database connection
+            $conn = new mysqli('localhost', 'username', 'password', 'your_database_name');
+
+            // Check the connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Get form data
+            $full_name = $_POST['full_name'];
+            $standard = $_POST['Standard'];
+            $medium = $_POST['Medium'];
+            $group_type = $_POST['group'];
+            $contact_no = $_POST['contact_no'];
+            $whatsapp_no = $_POST['WhatsApp_no'];
+            $gender = $_POST['gender'];
+            $address = $_POST['address'];
+            $city = $_POST['city'];
+
+            // Insert data into the database
+            $sql = "INSERT INTO student_data (full_name, standard, medium, group_type, contact_no, whatsapp_no, gender, address, city)
+        VALUES ('$full_name', '$standard', '$medium', '$group_type', '$contact_no', '$whatsapp_no', '$gender', '$address', '$city')";
+
+            if ($conn->query($sql) === TRUE) {
+                echo "Data inserted successfully.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+
+            // Close the database connection
+            $conn->close();
+            ?>
+
         </form>
     </section>
 </body>
