@@ -20,18 +20,18 @@
         <form class="form" action="#" method="post">
             <div class="input-box">
                 <label>Student Full Name :</label>
-                <input required="" placeholder="Enter full name" type="text">
+                <input required="" placeholder="Enter full name" type="text" name="full_name">
             </div>
             <div class="checkbox">
                 <label>Standard :</label>
                 <div class="s_option">
                     <div class="check">
                         <input type="radio" name="Standard" id="check1" checked="">
-                        <label for="check1">10th</label>
+                        <label for="10">10th</label>
                     </div>
                     <div class="check">
                         <input type="radio" name="Standard" id="check2">
-                        <label for="check2">12th(JEE/NEET + GUJCET)</label>
+                        <label for="12">12th(JEE/NEET + GUJCET)</label>
                     </div>
                 </div>
             </div>
@@ -40,11 +40,11 @@
                 <div class="s_option">
                     <div class="check">
                         <input type="radio" name="Medium" id="check1" checked="">
-                        <label for="check1">Guj</label>
+                        <label for="guj">Guj</label>
                     </div>
                     <div class="check">
                         <input type="radio" name="Medium" id="check2">
-                        <label for="check2">Eng</label>
+                        <label for="eng">Eng</label>
                     </div>
                 </div>
             </div>
@@ -52,22 +52,22 @@
                 <label>Group :</label>
                 <div class="s_option">
                     <div class="check">
-                        <input type="radio" name="group" id="check3" checked="">
-                        <label for="check1">A</label>
+                        <input type="radio" name="group" id="a">
+                        <label for="a">A</label>
                     </div>
                     <div class="check">
-                        <input type="radio" name="group" id="check4">
-                        <label for="check2">B</label>
+                        <input type="radio" name="group" id="b">
+                        <label for="b">B</label>
                     </div>
                 </div>
             </div>
             <div class="input-box">
                 <label>Contect No. :</label>
-                <input required="" placeholder="Enter phone number" type="telephone">
+                <input required="" placeholder="Enter phone number" type="number" name="contact_no">
             </div>
             <div class="input-box">
                 <label>WhatsApp No. :</label>
-                <input type="telephone" placeholder="Enter WhatsApp Number" required>
+                <input type="number" placeholder="Enter WhatsApp Number" name="WhatsApp_no" required>
             </div>
             <div class="gender-box">
                 <label style="color: #000;">Gender :</label>
@@ -88,11 +88,11 @@
             </div>
             <div class="input-box address">
                 <label>Address :</label>
-                <input required="" placeholder="Enter street address" type="text">
+                <input required="" placeholder="Enter street address" type="text" name="address">
                 <div class="column">
                     <div class="select-box">
-                        <select>
-                            <option hidden="">City</option>
+                        <select name="city">
+                            <option selected disabled value="">City</option>
                             <option value="Abrama">Abrama</option>
                             <option value="Adalaj">Adalaj</option>
                             <option value="Ahmedabad">Ahmedabad</option>
@@ -316,37 +316,53 @@
             </div>
             <button type="submit">Submit</button>
             <?php
-            // Establish a MySQL database connection
-            $conn = new mysqli('localhost', 'username', 'password', 'your_database_name');
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // Check the connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                // Establish a MySQL database connection
+                $conn = new mysqli('localhost', 'root', '', 'jee_mock');
+
+                // Check the connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // Get form data
+                $full_name = isset($_POST['full_name']) ? $_POST['full_name'] : null;
+                $standard = isset($_POST['Standard']) ? $_POST['Standard'] : null;
+                $medium = isset($_POST['Medium']) ? $_POST['Medium'] : null;
+                $group_type = isset($_POST['group']) ? $_POST['group'] : null;
+                $contact_no = isset($_POST['contact_no']) ? $_POST['contact_no'] : null;
+                $whatsapp_no = isset($_POST['WhatsApp_no']) ? $_POST['WhatsApp_no'] : null;
+                $gender = isset($_POST['gender']) ? $_POST['gender'] : null;
+                $address = isset($_POST['address']) ? $_POST['address'] : null;
+                $city = isset($_POST['city']) ? $_POST['city'] : null;
+
+
+                if (is_null($full_name)) die("Please Enter full_name !");
+                if (is_null($standard)) die("Please Enter standard !");
+                if (is_null($medium)) die("Please Enter medium !");
+                if (is_null($contact_no)) die("Please Enter contact_no !");
+                if (is_null($whatsapp_no)) die("Please Enter whatsapp_no !");
+                if (is_null($gender)) die("Please Enter gender !");
+                if (is_null($address)) die("Please Enter address !");
+                if (is_null($city)) die("Please Enter city !");
+
+                // Insert data into the database
+                $sql = "INSERT INTO student_data (full_name, standard, medium, group_type, contact_no, whatsapp_no, gender, address, city)
+                    VALUES (?,?,?,?,?,?,?,?,?)";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('sssssssss', $full_name, $standard, $medium, $group_type, $contact_no, $whatsapp_no, $gender, $address, $city);
+
+                if ($stmt->execute() === TRUE) {
+                    echo "Data inserted successfully.";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+
+                // Close the database connection
+                $conn->close();
             }
-
-            // Get form data
-            $full_name = $_POST['full_name'];
-            $standard = $_POST['Standard'];
-            $medium = $_POST['Medium'];
-            $group_type = $_POST['group'];
-            $contact_no = $_POST['contact_no'];
-            $whatsapp_no = $_POST['WhatsApp_no'];
-            $gender = $_POST['gender'];
-            $address = $_POST['address'];
-            $city = $_POST['city'];
-
-            // Insert data into the database
-            $sql = "INSERT INTO student_data (full_name, standard, medium, group_type, contact_no, whatsapp_no, gender, address, city)
-        VALUES ('$full_name', '$standard', '$medium', '$group_type', '$contact_no', '$whatsapp_no', '$gender', '$address', '$city')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "Data inserted successfully.";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-
-            // Close the database connection
-            $conn->close();
             ?>
 
         </form>
