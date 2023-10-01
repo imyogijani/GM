@@ -12,7 +12,7 @@
 <body>
     <section class="container">
         <header>Mock Test Registration</header>
-            <a href="index.html"><button type="button" class="btn"> <span>Single</span></button></a>
+            <a href="index.php"><button type="button" class="btn"> <span>Single</span></button></a>
             <a href="#"><button type="button" class="btn"> <span>Bulk</span></button></a>
         <hr style="color: black; border-radius: 10px; margin-top: 10px; ">
         <form class="form" action="#">
@@ -262,6 +262,7 @@
             <button>Submit</button>
         </form>
     </section>
+    
 </body>
 
 </html>

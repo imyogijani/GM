@@ -14,7 +14,7 @@
         <header>Mock Test Registration</header>
         <!-- <div class="column"> -->
         <a href="#"><button type="button" class="btn"> <span>Single</span></button></a>
-        <a href="bulk-regi.html"><button type="button" class="btn"> <span>Bulk</span></button></a>
+        <a href="bulk-regi.php"><button type="button" class="btn"> <span>Bulk</span></button></a>
         <!-- </div> -->
         <hr style="color: black; border-radius: 10px; margin-top: 10px; ">
         <form class="form" action="#" method="post">
