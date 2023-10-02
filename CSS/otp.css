@@ -1,0 +1,87 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Montserrat:wght@500;600&family=Nunito+Sans:ital,opsz,wght@0,6..12,600;0,6..12,700;0,6..12,1000;1,6..12,800&family=Nunito:wght@600&display=swap');
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 300px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10rem auto;
+    box-shadow: 3px 3px 8px 0px black;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .message {
+    color: #a3a3a3;
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: center;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+  
+  .inputs {
+    margin-top: 10px;
+  }
+  
+  .inputs input {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    border: none;
+    border-bottom: 1.5px solid #d2d2d2;
+    margin: 0 10px;
+  }
+  
+  .inputs input:focus {
+    border-bottom: 1.5px solid royalblue;
+    outline: none;
+  }
+  .inputs input::-webkit-inner-spin-button,
+  .inputs input::-webkit-outer-spin-button{
+    display: none;
+  }
+  
+  .action {
+    margin-top: 24px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FF8D00;;
+    color: white;
+    cursor: pointer;
+    align-self: end;
+    font-family: 'Montserrat', sans-serif;
+
+  }
+  .resendNote {
+    font-size: 0.9rem;
+    font-family: 'Nunito Sans', sans-serif;
+    color: black;
+    width: 100%;
+    margin-left: 15%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; */
+  }
+  
+  .resendBtn {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: transparent;
+    border: none;
+    /* color: rgb(92 0 229); */
+    color: #FF8D00;;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+  }
